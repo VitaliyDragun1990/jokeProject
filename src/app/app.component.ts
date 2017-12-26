@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Joke} from './joke';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  joke: Joke = new Joke('A kid threw a lump of ceddar at me',
+    'I thought \'That\'s not very mature\'');
 }
