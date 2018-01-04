@@ -1,12 +1,9 @@
-<div class="card card-block">
-  <h4 class="card-title">
-    <ng-content select=".setup"></ng-content>
-  </h4>
+<div class="card card-block"
+     [ccCardHover]="{querySelector: 'p'}">
+  <h4 class="card-title">{{data.setup | clean: 'hell': 'damn': 'crap'}}</h4>
   <p class="card-text"
-      [hidden]="data.hide">
-    <ng-content select=".punchline"></ng-content>
-  </p>
-  <a (click)="data.toggle()"
-     class="btn btn-primary">Tell Me
-  </a>
+     [style.display]="'none'">{{data.punchline | clean: 'hell': 'damn': 'crap'}}</p>
+  <!--<button (click)="data.toggle()"-->
+          <!--class="btn btn-primary">Tell Me-->
+  <!--</button>-->
 </div>

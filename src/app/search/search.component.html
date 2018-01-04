@@ -1,0 +1,55 @@
+<!--<form class="form-inline">-->
+  <!--<div class="form-group">-->
+    <!--<input type="search"-->
+            <!--class="form-control"-->
+            <!--placeholder="Enter search string"-->
+            <!--#search>-->
+  <!--</div>-->
+  <!--<button class="btn btn-primary"-->
+          <!--(click)="doSearch(search.value)">-->
+          <!--Search using Promises-->
+  <!--</button>-->
+<!--</form>-->
+
+<form class="form-inline m-t-1">
+  <div class="form-group">
+    <input type="search"
+           class="form-control"
+           placeholder="Enter search string"
+           [formControl]="searchField">
+  </div>
+  <!--<button class="btn btn-primary"-->
+          <!--(click)="doSearchFor(search.value)">-->
+    <!--Search using Observables-->
+  <!--</button>-->
+<!--</form>-->
+
+<hr>
+
+<!--<div class="text-center">-->
+  <!--<p class="lead" *ngIf="loading">Loading...</p>-->
+<!--</div>-->
+<div class="text-center">
+  <p class="lead" *ngIf="loadingF">Loading...</p>
+</div>
+
+<!--&lt;!&ndash;Using Promises&ndash;&gt;-->
+<!--<ul class="list-group">-->
+  <!--<li class="list-group-item" *ngFor="let track of itunes.results">-->
+    <!--<img src="{{track.thumbnail}}" alt="album image">-->
+    <!--<a target="_blank"-->
+       <!--href="{{track.link}}">{{track.name}} - {{track.artist}}-->
+    <!--</a>-->
+  <!--</li>-->
+<!--</ul>-->
+
+<hr>
+<!--Using Observables-->
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let track of results | async">
+    <img src="{{track.thumbnail}}" alt="album image">
+    <a target="_blank"
+       href="{{track.link}}">{{track.name}} - {{track.artist}}
+    </a>
+  </li>
+</ul>
