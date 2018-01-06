@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item"
+      *ngFor="let album of itunes.albums">
+    <img src="{{album.artwork}}" alt="Cover image of the album">
+    <a href="{{album.view}}" target="_blank">{{ album.name }}</a>
+  </li>
+</ul>

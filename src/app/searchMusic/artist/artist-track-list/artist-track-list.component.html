@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item"
+      *ngFor="let track of itunes.tracks">
+    <img src="{{track.artwork}}" alt="Track cover image">
+    <a href="{{track.view}}" target="_blank">{{ track.name }}</a>
+  </li>
+</ul>

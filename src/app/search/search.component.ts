@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SearchService} from '../search.service';
-import {SearchItem} from '../search-item';
+import {SearchService} from './search.service';
+import {SearchItem} from './search-item';
 import {Observable} from 'rxjs/Observable';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
