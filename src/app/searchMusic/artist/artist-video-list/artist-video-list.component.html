@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item"
+      *ngFor="let video of itunes.videos">
+    <img src="{{video.artwork}}" alt="Preview image of video clip">
+    <a href="{{video.view}}" target="_blank">{{video.name}}</a>
+  </li>
+</ul>

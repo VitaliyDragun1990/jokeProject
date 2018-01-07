@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {SearchMusicService} from '../../search-music.service';
+import {SearchMusicService} from '../../services/search-music.service';
 
 @Component({
   selector: 'app-artist-track-list',

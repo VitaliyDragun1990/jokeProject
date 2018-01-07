@@ -1,15 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SearchItem} from './search-item';
-import {Track} from './artist/track';
-import {Album} from './artist/album';
+import {SearchItem} from '../search-item';
+import {Track} from '../domain/track';
+import {Album} from '../domain/album';
+import {Artist} from '../domain/artist';
+import {Video} from '../domain/video';
 
 @Injectable()
 export class SearchMusicService {
   private apiRoot = 'https://itunes.apple.com';
-  results: SearchItem[];
-  tracks: Track[];
-  albums: Album[];
+  results: SearchItem[] = [];
+  tracks: Track[] = [];
+  albums: Album[] = [];
+  videos: Video[] = [];
+  artist: Artist;
 
   constructor(private http: HttpClient) {
   }
@@ -74,6 +78,48 @@ export class SearchMusicService {
                 item.collectionName
               );
             });
+            resolve();
+          },
+          msg => {  // Error
+            reject(msg);
+          });
+    });
+  }
+
+  searchVideos(artistId: string): Promise<VoidFunction> {
+    return new Promise<VoidFunction>((resolve, reject) => {
+      this.videos = [];
+      let apiURL = `${this.apiRoot}/lookup?id=${artistId}&entity=musicVideo`;
+      this.http.jsonp(apiURL, 'callback')
+        .toPromise()
+        .then(res => {    // Success
+            this.videos = res['results'].slice(1).map(item => {
+              return new Video(
+                item.artworkUrl100,
+                item.trackViewUrl,
+                item.trackName
+              );
+            });
+            resolve();
+          },
+          msg => {  // Error
+            reject(msg);
+          });
+    });
+  }
+
+  searchArtist(artistId: string): Promise<VoidFunction> {
+    return new Promise<VoidFunction>((resolve, reject) => {
+      this.artist = null;
+      let apiURL = `${this.apiRoot}/lookup?id=${artistId}`;
+      this.http.jsonp(apiURL, 'callback')
+        .toPromise()
+        .then(res => {    // Success
+            let artistItem = res['results'][0];
+            this.artist = new Artist(
+              artistItem.artistName,
+              artistItem.primaryGenreName
+            );
             resolve();
           },
           msg => {  // Error

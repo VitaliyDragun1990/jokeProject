@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SearchMusicService} from '../search-music.service';
+import {SearchMusicService} from '../services/search-music.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -35,6 +35,10 @@ export class SearchMusicComponent implements OnInit {
   onSearch(term: string) {
     // define optional parameter 'term'
     this.router.navigate(['search', {term: term}]);
+  }
+
+  canDeactivate() {
+    return this._itunes.results.length > 0;
   }
 
 }
