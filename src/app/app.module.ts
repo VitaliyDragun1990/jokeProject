@@ -33,6 +33,14 @@ import {OnlyLoggedInUsersGuard} from './searchMusic/guards/only-logged-in-users.
 import {AlwaysAuthChildrenGuard} from './searchMusic/guards/always-auth-children.guard';
 import {UnsearchedTermGuard} from './searchMusic/guards/unsearched-term.guard';
 import { ArtistVideoListComponent } from './searchMusic/artist/artist-video-list/artist-video-list.component';
+import { DefaultValuePipe } from './_testing/default-value.pipe';
+import {AuthService} from './_testing/auth.service';
+import { LoginComponent } from './_testing/login/login.component';
+import { LoginFormComponent } from './_testing/login-form/login-form.component';
+import { HoverFocusDirective } from './_testing/hover-focus.directive';
+import { LoginDrivenFormComponent } from './_testing/login-driven-form/login-driven-form.component';
+import { SearchTestComponent } from './_testing/search-test/search-test.component';
+import { HomeTestComponent } from './_testing/home-test/home-test.component';
 
 // define routes for searchMusic application
 const routes: Routes = [
@@ -78,7 +86,14 @@ const routes: Routes = [
     ArtistComponent,
     ArtistTrackListComponent,
     ArtistAlbumListComponent,
-    ArtistVideoListComponent
+    ArtistVideoListComponent,
+    DefaultValuePipe,
+    LoginComponent,
+    LoginFormComponent,
+    HoverFocusDirective,
+    LoginDrivenFormComponent,
+    SearchTestComponent,
+    HomeTestComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +105,7 @@ const routes: Routes = [
   ],
   providers: [SimpleService, SearchService, SearchMusicService, AlwaysAuthGuard,
     UserAuthService, OnlyLoggedInUsersGuard, AlwaysAuthChildrenGuard,
-    UnsearchedTermGuard
+    UnsearchedTermGuard, AuthService
   ],
   bootstrap: [AppComponent]
 })

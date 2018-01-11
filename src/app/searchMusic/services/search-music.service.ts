@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SearchItem} from '../search-item';
+import {SearchItem} from '../domain/search-item';
 import {Track} from '../domain/track';
 import {Album} from '../domain/album';
 import {Artist} from '../domain/artist';
